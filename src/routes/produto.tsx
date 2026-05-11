@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, ShoppingBag, User, Facebook, Instagram, Youtube, Truck, CreditCard, Headphones, ZoomIn } from "lucide-react";
 import bottleBox from "@/assets/pera-manca-box.png";
 import bottleClose from "@/assets/pera-manca-bottle.png";
@@ -21,6 +21,23 @@ const BOTTLE_ALT = bottleClose;
 function ProductPage() {
   const images = [BOTTLE, BOTTLE_ALT];
   const [activeImg, setActiveImg] = useState(0);
+  const [location, setLocation] = useState<string>("a sua região");
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("https://ipwho.is/")
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelled || !d?.success) return;
+        const city = d.city as string | undefined;
+        const region = d.region_code || d.region;
+        const country = d.country as string | undefined;
+        const parts = [city, region].filter(Boolean).join(", ");
+        setLocation(parts || country || "a sua região");
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-neutral-900">
@@ -121,7 +138,7 @@ function ProductPage() {
             <img src={dhlLogo} alt="DHL" className="w-12 h-8 object-contain rounded" />
             <div className="text-sm">
               <div className="font-semibold">Entrega expressa <span className="font-normal">Entrega em 24 horas</span></div>
-              <div className="text-neutral-600">para São Paulo, SP e a Europa</div>
+              <div className="text-neutral-600">para {location}</div>
             </div>
           </div>
 
