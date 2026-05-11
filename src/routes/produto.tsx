@@ -25,16 +25,24 @@ function ProductPage() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch("https://ipwho.is/")
-      .then((r) => r.json())
-      .then((d) => {
-        if (cancelled || !d?.success) return;
-        // prefer state/region (e.g. "São Paulo"), fallback to country
+    (async () => {
+      try {
+        const r = await fetch("https://ipapi.co/json/");
+        if (!r.ok) throw new Error(String(r.status));
+        const d = await r.json();
+        if (cancelled) return;
         const region = (d.region as string | undefined) || (d.region_code as string | undefined);
-        const country = d.country as string | undefined;
+        const country = (d.country_name as string | undefined) || (d.country as string | undefined);
         setLocation(region || country || "");
-      })
-      .catch(() => {});
+      } catch {
+        try {
+          const r2 = await fetch("https://get.geojs.io/v1/ip/geo.json");
+          const d2 = await r2.json();
+          if (cancelled) return;
+          setLocation((d2.region as string) || (d2.country as string) || "");
+        } catch {}
+      }
+    })();
     return () => { cancelled = true; };
   }, []);
 
