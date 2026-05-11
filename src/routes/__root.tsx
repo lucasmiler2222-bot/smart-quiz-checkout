@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "site" },
+      { name: "description", content: "Quiz Flow Master creates interactive quizzes for product pages and checkout flows." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "site" },
+      { property: "og:description", content: "Quiz Flow Master creates interactive quizzes for product pages and checkout flows." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "site" },
+      { name: "twitter:description", content: "Quiz Flow Master creates interactive quizzes for product pages and checkout flows." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bec1e0b7-3bc1-4b17-bcac-121dd8677c8e/id-preview-89926601--09c9dad2-877b-427c-a664-5b0f4ec9b874.lovable.app-1778472724042.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bec1e0b7-3bc1-4b17-bcac-121dd8677c8e/id-preview-89926601--09c9dad2-877b-427c-a664-5b0f4ec9b874.lovable.app-1778472724042.png" },
     ],
     links: [
       {
