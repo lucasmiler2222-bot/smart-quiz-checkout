@@ -149,12 +149,12 @@ function ProductPage() {
             </div>
           </div>
 
-          <Link
-            to="/checkout"
+          <a
+            href="https://checkout.waylinxpay.com/6833046036632739"
             className="block w-full text-center bg-neutral-900 hover:bg-black text-white font-bold py-4 rounded-md tracking-wide"
           >
             COMPRAR AGORA
-          </Link>
+          </a>
 
           <div className="border rounded-md p-3 flex gap-3 items-start">
             <CreditCard className="w-5 h-5 mt-1" />
@@ -230,9 +230,9 @@ function ProductPage() {
           <span className="text-neutral-500">•</span>
           <span className="font-semibold">€49,90</span>
         </div>
-        <Link to="/checkout" className="bg-neutral-900 hover:bg-black text-white font-bold px-6 py-3 rounded-md">
+        <a href="https://checkout.waylinxpay.com/6833046036632739" className="bg-neutral-900 hover:bg-black text-white font-bold px-6 py-3 rounded-md">
           COMPRAR AGORA
-        </Link>
+        </a>
       </div>
 
       {/* Footer */}
