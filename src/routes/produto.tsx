@@ -130,7 +130,7 @@ function ProductPage() {
             <img src={dhlLogo} alt="DHL" className="w-12 h-8 object-contain rounded" />
             <div className="text-sm">
               <div className="font-semibold">Entrega expressa <span className="font-normal">Entrega em 24 horas</span></div>
-              <div className="text-neutral-600">para {location}</div>
+              {location && <div className="text-neutral-600">para {location}</div>}
             </div>
           </div>
 
