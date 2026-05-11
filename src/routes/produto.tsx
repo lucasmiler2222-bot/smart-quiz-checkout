@@ -21,7 +21,7 @@ const BOTTLE_ALT = bottleClose;
 function ProductPage() {
   const images = [BOTTLE, BOTTLE_ALT];
   const [activeImg, setActiveImg] = useState(0);
-  const [location, setLocation] = useState<string>("a sua região");
+  const [location, setLocation] = useState<string>("");
 
   useEffect(() => {
     let cancelled = false;
@@ -29,11 +29,10 @@ function ProductPage() {
       .then((r) => r.json())
       .then((d) => {
         if (cancelled || !d?.success) return;
-        const city = d.city as string | undefined;
-        const region = d.region_code || d.region;
+        // prefer state/region (e.g. "São Paulo"), fallback to country
+        const region = (d.region as string | undefined) || (d.region_code as string | undefined);
         const country = d.country as string | undefined;
-        const parts = [city, region].filter(Boolean).join(", ");
-        setLocation(parts || country || "a sua região");
+        setLocation(region || country || "");
       })
       .catch(() => {});
     return () => { cancelled = true; };
