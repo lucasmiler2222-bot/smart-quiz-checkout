@@ -70,13 +70,6 @@ function ProductPage() {
             </div>
           </div>
         </div>
-        <nav className="border-t">
-          <div className="mx-auto max-w-7xl px-4 py-3 flex gap-8 text-sm font-medium">
-            <Link to="/">INÍCIO</Link>
-            <a>CATÁLOGO</a>
-            <a>CONTACTO</a>
-          </div>
-        </nav>
       </header>
 
       {/* Product */}
