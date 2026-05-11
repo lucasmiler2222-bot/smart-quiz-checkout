@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import anniversaryImg from "@/assets/anniversary-250.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -21,20 +22,11 @@ function Landing() {
 
         <section className="mt-8 rounded-xl bg-white shadow-sm p-6 md:p-10">
           <div className="flex justify-center">
-            <div className="text-center">
-              <div className="font-serif text-[110px] leading-none text-[#b8924a] tracking-tight">
-                250
-                <div className="text-xs tracking-[0.3em] -mt-2">A N O S</div>
-              </div>
-              <div className="mt-6 text-[#b8924a] text-sm">
-                <div className="flex items-center gap-3 justify-center">
-                  <span>1775</span>
-                  <span className="inline-block w-24 border-t border-[#b8924a]" />
-                  <span>2025</span>
-                </div>
-                <div className="mt-3 tracking-[0.3em] text-xs">— DESDE 1775 —</div>
-              </div>
-            </div>
+            <img
+              src={anniversaryImg}
+              alt="250 Anos — Desde 1775"
+              className="max-w-[320px] w-full h-auto"
+            />
           </div>
 
           <div className="mt-8 space-y-5 text-center text-[15px] leading-relaxed text-neutral-800">
