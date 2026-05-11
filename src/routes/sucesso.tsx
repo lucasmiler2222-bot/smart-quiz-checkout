@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import bottleBox from "@/assets/pera-manca-box.png";
 
 export const Route = createFileRoute("/sucesso")({
   component: SuccessPage,
@@ -30,9 +31,9 @@ function SuccessPage() {
 
           <div className="mt-8 flex justify-center">
             <img
-              src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=600&q=80"
-              alt="Pêra-Manca Tinto 2019"
-              className="max-h-80 object-contain"
+              src={bottleBox}
+              alt="Pêra-Manca Tinto 2019 com caixa de madeira"
+              className="max-h-96 object-contain"
             />
           </div>
 

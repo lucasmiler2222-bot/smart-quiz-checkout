@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, ShoppingBag, User, Facebook, Instagram, Youtube, Truck, CreditCard, Headphones, ZoomIn } from "lucide-react";
+import bottleBox from "@/assets/pera-manca-box.png";
+import bottleClose from "@/assets/pera-manca-bottle.png";
 
 export const Route = createFileRoute("/produto")({
   component: ProductPage,
@@ -11,7 +13,8 @@ export const Route = createFileRoute("/produto")({
   }),
 });
 
-const BOTTLE = "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=900&q=80";
+const BOTTLE = bottleBox;
+const BOTTLE_ALT = bottleClose;
 
 function ProductPage() {
   return (
@@ -62,7 +65,7 @@ function ProductPage() {
             <img src={BOTTLE} alt="Pêra-Manca thumb" className="w-full h-20 object-contain" />
           </div>
           <div className="border rounded-md p-2 cursor-pointer">
-            <img src={BOTTLE} alt="Pêra-Manca thumb 2" className="w-full h-20 object-contain" />
+            <img src={BOTTLE_ALT} alt="Pêra-Manca thumb 2" className="w-full h-20 object-contain" />
           </div>
         </div>
 
