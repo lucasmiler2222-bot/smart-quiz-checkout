@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Search, ShoppingBag, User, Facebook, Instagram, Youtube, Truck, CreditCard, Headphones, ZoomIn } from "lucide-react";
 import bottleBox from "@/assets/pera-manca-box.png";
 import bottleClose from "@/assets/pera-manca-bottle.png";
@@ -18,6 +19,9 @@ const BOTTLE = bottleBox;
 const BOTTLE_ALT = bottleClose;
 
 function ProductPage() {
+  const images = [BOTTLE, BOTTLE_ALT];
+  const [activeImg, setActiveImg] = useState(0);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* Top bar */}
@@ -60,22 +64,44 @@ function ProductPage() {
 
       {/* Product */}
       <section className="mx-auto max-w-7xl px-4 py-8 grid md:grid-cols-[100px_1fr_400px] gap-8">
-        {/* Thumbs */}
+        {/* Thumbs (desktop) */}
         <div className="hidden md:flex flex-col gap-3">
-          <div className="border rounded-md p-2 cursor-pointer">
-            <img src={BOTTLE} alt="Pêra-Manca thumb" className="w-full h-20 object-contain" />
-          </div>
-          <div className="border rounded-md p-2 cursor-pointer">
-            <img src={BOTTLE_ALT} alt="Pêra-Manca thumb 2" className="w-full h-20 object-contain" />
-          </div>
+          {images.map((src, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActiveImg(i)}
+              className={`border rounded-md p-2 cursor-pointer transition-colors ${
+                activeImg === i ? "border-[#e30613] ring-1 ring-[#e30613]" : "border-neutral-200"
+              }`}
+            >
+              <img src={src} alt={`Pêra-Manca thumb ${i + 1}`} className="w-full h-20 object-contain" />
+            </button>
+          ))}
         </div>
 
         {/* Main image */}
-        <div className="bg-neutral-50 rounded-lg flex items-center justify-center relative min-h-[500px]">
-          <img src={BOTTLE} alt="Pêra-Manca Tinto 2019" className="max-h-[600px] object-contain" />
+        <div className="bg-neutral-50 rounded-lg flex items-center justify-center relative min-h-[400px] md:min-h-[500px]">
+          <img src={images[activeImg]} alt="Pêra-Manca Tinto 2019" className="max-h-[600px] object-contain" />
           <button className="absolute bottom-4 right-4 bg-white border rounded-full p-2 shadow-sm">
             <ZoomIn className="w-4 h-4" />
           </button>
+
+          {/* Thumbs (mobile) */}
+          <div className="md:hidden absolute bottom-3 left-3 flex gap-2">
+            {images.map((src, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActiveImg(i)}
+                className={`bg-white border rounded-md p-1 transition-colors ${
+                  activeImg === i ? "border-[#e30613] ring-1 ring-[#e30613]" : "border-neutral-200"
+                }`}
+              >
+                <img src={src} alt={`thumb ${i + 1}`} className="w-12 h-12 object-contain" />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Info */}
